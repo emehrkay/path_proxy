@@ -1,4 +1,4 @@
-package main
+package path_proxy
 
 import (
 	"net/http"
