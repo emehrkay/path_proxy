@@ -50,7 +50,7 @@ func (h *PathProxyHandler) ProxyDefintions(proxies ProxyDefSet) error {
 func (h *PathProxyHandler) Proxy(pattern, targetUrl string) error {
 	patternRe, err := regexp.Compile(pattern)
 	if err != nil {
-		return nil
+		return err
 	}
 
 	urlParsed, err := url.Parse(targetUrl)
@@ -60,7 +60,7 @@ func (h *PathProxyHandler) Proxy(pattern, targetUrl string) error {
 
 	proxy := httputil.NewSingleHostReverseProxy(urlParsed)
 	if err != nil {
-		return nil
+		return err
 	}
 
 	h.Handler(patternRe, proxy)
