@@ -7,7 +7,7 @@ Super simple way to define a proxy based on matching a url path.
 In this example we:
 
 1. start a proxy server on port `:3333`
-2. send all traffic that matches `/api` to `http://localhost:7788`
+2. send all traffic that matches `^/api` (starts with /api) to `http://localhost:7788`
 3. send everything else (`/`) to `http://localhost:3000`
 
 ```go
@@ -44,3 +44,4 @@ func main() {
 ```
 
 > Route definitions are automatically ordered from longest to shortest.
+> This is also a simple regular expression handler `handler.Handle("/some/regex$", anActualHandler)`
